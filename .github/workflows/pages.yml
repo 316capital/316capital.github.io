@@ -35,3 +35,35 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+
+      - name: Notify IndexNow
+        env:
+          INDEXNOW_KEY: 375b86370c27593f64e99539085cdfa6
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          import urllib.request
+          import xml.etree.ElementTree as ET
+
+          key = os.environ["INDEXNOW_KEY"]
+          tree = ET.parse("sitemap.xml")
+          namespace = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+          urls = [node.text for node in tree.findall("s:url/s:loc", namespace)]
+          payload = json.dumps({
+              "host": "316cap.com",
+              "key": key,
+              "keyLocation": f"https://316cap.com/{key}.txt",
+              "urlList": urls,
+          }).encode()
+          request = urllib.request.Request(
+              "https://api.indexnow.org/indexnow",
+              data=payload,
+              headers={"Content-Type": "application/json; charset=utf-8"},
+              method="POST",
+          )
+          with urllib.request.urlopen(request, timeout=30) as response:
+              if response.status not in (200, 202):
+                  raise RuntimeError(f"IndexNow returned HTTP {response.status}")
+              print(f"IndexNow accepted {len(urls)} canonical URLs")
+          PY
