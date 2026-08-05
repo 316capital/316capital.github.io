@@ -229,8 +229,8 @@
   var pollTimer = null;
 
   function pollOnce() {
-    if (!sessionId) return;
-    api({ action: "poll", session_id: sessionId, after: lastId })
+    if (!sessionId) return Promise.resolve();
+    return api({ action: "poll", session_id: sessionId, after: lastId })
       .then(function (r) {
         if (!r || !r.ok) return;
         drain(r);
@@ -240,14 +240,14 @@
   }
 
   function startPolling() {
-    if (pollTimer) return;
-    pollTimer = setInterval(function () {
-      if (!root.classList.contains("open")) return;   // open tab, closed panel: stay quiet
-      if (document.hidden) return;                    // background tab: stay quiet
-      pollOnce();
-    }, 4000);
+    if (pollTimer || !root.classList.contains("open")) return;
+    pollTimer = setTimeout(function () {
+      pollTimer = null;
+      if (document.hidden) { startPolling(); return; }
+      pollOnce().then(startPolling);
+    }, takenOver ? 4000 : 12000);
   }
-  function stopPolling() { if (pollTimer) { clearInterval(pollTimer); pollTimer = null; } }
+  function stopPolling() { if (pollTimer) { clearTimeout(pollTimer); pollTimer = null; } }
 
   // Coming back to the tab should feel instant, not up to four seconds stale.
   document.addEventListener("visibilitychange", function () {
@@ -365,7 +365,7 @@
 
   // Closing the panel does not end the conversation, it only stops the polling. Reopening
   // catches up immediately, so a rep's reply is waiting rather than lost.
-  function close() { root.classList.remove("open"); }
+  function close() { root.classList.remove("open"); stopPolling(); }
   function reopen() {
     root.classList.add("open");
     if (sessionId) { startPolling(); pollOnce(); }
