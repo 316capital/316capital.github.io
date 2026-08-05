@@ -67,9 +67,19 @@
     "#c316-log{flex:1;overflow-y:auto;padding:20px 18px;background:" + SAND + "}",
     ".c316-m{margin-bottom:14px;display:flex}",
     ".c316-m.v{justify-content:flex-end}",
-    ".c316-b{max-width:85%;padding:12px 15px;border-radius:15px;font-size:14px;line-height:1.55;white-space:pre-wrap;word-wrap:break-word}",
+    ".c316-w{max-width:85%;min-width:0}",
+    ".c316-b{max-width:100%;padding:12px 15px;border-radius:15px;font-size:14px;line-height:1.55;white-space:pre-wrap;word-wrap:break-word}",
     ".c316-m.b .c316-b{background:#fff;color:#16224a;border:1px solid rgba(7,25,76,.09);border-bottom-left-radius:5px;box-shadow:0 1px 3px rgba(7,25,76,.05)}",
     ".c316-m.v .c316-b{background:" + NAVY + ";color:#fff;border-bottom-right-radius:5px}",
+
+    /* A real person. Gold left rule and a name above the bubble, so nobody has to wonder
+       whether they are still talking to software. That distinction is the whole product. */
+    ".c316-m.s .c316-b{background:#fff;color:#16224a;border:1px solid rgba(7,25,76,.09);border-left:3px solid " + GOLD + ";border-bottom-left-radius:5px;box-shadow:0 1px 3px rgba(7,25,76,.05)}",
+    ".c316-who{font-size:10.5px;font-weight:650;letter-spacing:.05em;text-transform:uppercase;color:" + NAVY + ";margin:0 0 5px 3px;opacity:.72}",
+    ".c316-sys{margin:4px 0 16px;text-align:center;font-size:11.5px;color:#5b6375;line-height:1.5}",
+    ".c316-sys span{display:inline-block;padding:5px 12px;background:rgba(237,191,1,.13);border:1px solid rgba(237,191,1,.4);border-radius:999px}",
+    "#c316-hd.live p{opacity:1;color:" + GOLD + "}",
+    "#c316-hd.live p b{font-weight:650}",
 
     "#c316-form{padding:15px;background:#fff;border-top:1px solid rgba(7,25,76,.09)}",
     "#c316-form input[type=text],#c316-form input[type=email],#c316-form input[type=tel]{width:100%;padding:11px 13px;margin-bottom:9px;border:1px solid rgba(7,25,76,.18);border-radius:10px;font-size:14px;font-family:inherit;color:#16224a;transition:border-color .15s,box-shadow .15s}",
@@ -139,15 +149,68 @@
   var log = root.querySelector("#c316-log");
   var formArea = root.querySelector("#c316-form");
 
-  function push(role, text) {
-    var m = el('<div class="c316-m ' + (role === "visitor" ? "v" : "b") + '"><div class="c316-b"></div></div>');
-    m.querySelector(".c316-b").textContent = text;
+  function push(role, text, who) {
+    var m;
+    if (role === "system") {
+      m = el('<div class="c316-sys"><span></span></div>');
+      m.querySelector("span").textContent = text;
+    } else {
+      var cls = role === "visitor" ? "v" : role === "staff" ? "s" : "b";
+      m = el('<div class="c316-m ' + cls + '"><div class="c316-w"><div class="c316-b"></div></div></div>');
+      if (role === "staff" && who) {
+        var n = el('<div class="c316-who"></div>');
+        n.textContent = who;
+        m.firstChild.insertBefore(n, m.firstChild.firstChild);
+      }
+      m.querySelector(".c316-b").textContent = text;
+    }
     log.appendChild(m); log.scrollTop = log.scrollHeight;
     return m;
   }
   function thinking() {
-    var m = el('<div class="c316-m b"><div class="c316-b c316-dots"><span></span><span></span><span></span></div></div>');
+    var m = el('<div class="c316-m b"><div class="c316-w"><div class="c316-b c316-dots"><span></span><span></span><span></span></div></div></div>');
     log.appendChild(m); log.scrollTop = log.scrollHeight; return m;
+  }
+
+  // ---- one delivery path -------------------------------------------------------------
+  // Every server response carries `messages`: everything the visitor has not seen yet, in
+  // database order. The widget never invents a line of its own. That is what lets a bot and
+  // a human write into the same window without one of them being dropped or duplicated,
+  // and it means the poll and the send response use identical rendering code.
+  var lastId = 0, takenOver = false, agentName = null;
+
+  function drain(r) {
+    var list = r && r.messages;
+    if (!list || !list.length) {
+      // Defensive: if the endpoint is ever rolled back to a version that only returns a
+      // string, still show it rather than going silent.
+      if (r && r.reply) push("bot", r.reply);
+      return;
+    }
+    for (var i = 0; i < list.length; i++) {
+      var m = list[i];
+      if (m.id <= lastId) continue;
+      lastId = m.id;
+      push(m.role, m.content, m.sender_name);
+    }
+  }
+
+  function setLive(on, name) {
+    if (on === takenOver && name === agentName) return;
+    takenOver = on; agentName = name || null;
+    var hd = root.querySelector("#c316-hd"), sub = hd.querySelector("p");
+    if (on) {
+      hd.classList.add("live");
+      sub.innerHTML = "";
+      sub.appendChild(document.createTextNode("You are talking to "));
+      var b = document.createElement("b"); b.textContent = agentName || "a member of the team";
+      sub.appendChild(b);
+    } else {
+      hd.classList.remove("live");
+      sub.textContent = "Private lending for real estate investors";
+    }
+    var input = root.querySelector("#c316-in");
+    if (input) input.placeholder = on ? "Type your message" : "Type your answer";
   }
 
   function api(payload) {
@@ -157,6 +220,39 @@
       body: JSON.stringify(payload)
     }).then(function (r) { return r.json(); });
   }
+
+  // ---- polling ------------------------------------------------------------------------
+  // A websocket for a chat bubble on a marketing site is not worth the operational surface.
+  // This is one indexed read with no model call behind it, and it only runs while the panel
+  // is open. It backs off to 12 seconds when a human is not in the thread, because then the
+  // only thing it can possibly discover is a rep arriving.
+  var pollTimer = null;
+
+  function pollOnce() {
+    if (!sessionId) return;
+    api({ action: "poll", session_id: sessionId, after: lastId })
+      .then(function (r) {
+        if (!r || !r.ok) return;
+        drain(r);
+        setLive(r.taken_over === true, r.agent);
+      })
+      .catch(function () { /* a dropped poll is not worth telling the visitor about */ });
+  }
+
+  function startPolling() {
+    if (pollTimer) return;
+    pollTimer = setInterval(function () {
+      if (!root.classList.contains("open")) return;   // open tab, closed panel: stay quiet
+      if (document.hidden) return;                    // background tab: stay quiet
+      pollOnce();
+    }, 4000);
+  }
+  function stopPolling() { if (pollTimer) { clearInterval(pollTimer); pollTimer = null; } }
+
+  // Coming back to the tab should feel instant, not up to four seconds stale.
+  document.addEventListener("visibilitychange", function () {
+    if (!document.hidden && root.classList.contains("open")) pollOnce();
+  });
 
   function utm() {
     var p = new URLSearchParams(location.search), o = {};
@@ -190,13 +286,20 @@
       push("visitor", fn + (ph ? "  |  " + em + "  |  " + ph : "  |  " + em));
       var t = thinking();
       api({
-        action: "capture", session_id: sessionId,
+        action: "capture", session_id: sessionId, after: lastId,
         first_name: fn, last_name: formArea.querySelector("#c316-ln").value.trim(),
         email: em, phone: ph, sms_consent: formArea.querySelector("#c316-cs").checked
       }).then(function (r) {
         t.remove();
-        push("bot", r.reply || "Thanks. What are you working on?");
+        if (r && r.ok === false) {
+          go.disabled = false; go.textContent = "Continue";
+          push("bot", r.reply || "I need a name and a working email so I can send your terms.");
+          return;
+        }
+        drain(r);
         renderChat();
+        // The visitor is a known person from here on, so a rep can see the thread and join it.
+        startPolling();
       }).catch(function () {
         t.remove(); go.disabled = false; go.textContent = "Continue";
         push("bot", "That did not go through. Email info@316cap.com and we will pick it up.");
@@ -218,15 +321,19 @@
       if (!text || busy) return;
       busy = true; send.disabled = true;
       push("visitor", text); input.value = ""; input.style.height = "auto";
-      var t = thinking();
-      api({ action: "message", session_id: sessionId, text: text })
+      // No typing dots when a person has the thread. Animated dots are a promise that an
+      // answer is seconds away; a human might take a minute, and a bouncing indicator that
+      // never resolves reads as broken. The message is delivered either way.
+      var t = takenOver ? null : thinking();
+      api({ action: "message", session_id: sessionId, text: text, after: lastId })
         .then(function (r) {
-          t.remove();
-          push("bot", r.reply || "Sorry, say that again?");
-          if (r.step === "done") { input.placeholder = "Anything else?"; }
+          if (t) t.remove();
+          setLive(r && r.taken_over === true, r && r.agent);
+          drain(r);
+          if (r && r.step === "done") { input.placeholder = "Anything else?"; }
         })
         .catch(function () {
-          t.remove();
+          if (t) t.remove();
           push("bot", "Connection dropped. Call +1 (617) 546-4817 or email info@316cap.com.");
         })
         .then(function () { busy = false; send.disabled = false; input.focus(); });
@@ -247,7 +354,7 @@
         t.remove();
         if (!r.ok) { push("bot", r.reply || "Chat is offline. Email info@316cap.com."); return; }
         sessionId = r.session_id;
-        push("bot", r.reply);
+        drain(r);
         renderCapture();
       })
       .catch(function () {
@@ -256,9 +363,18 @@
       });
   }
 
-  root.querySelector("#c316-btn").onclick = open;
-  root.querySelector("#c316-x").onclick = function () { root.classList.remove("open"); };
+  // Closing the panel does not end the conversation, it only stops the polling. Reopening
+  // catches up immediately, so a rep's reply is waiting rather than lost.
+  function close() { root.classList.remove("open"); }
+  function reopen() {
+    root.classList.add("open");
+    if (sessionId) { startPolling(); pollOnce(); }
+  }
+
+  root.querySelector("#c316-btn").onclick = function () { opened ? reopen() : open(); };
+  root.querySelector("#c316-x").onclick = close;
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && root.classList.contains("open")) root.classList.remove("open");
+    if (e.key === "Escape" && root.classList.contains("open")) close();
   });
+  window.addEventListener("pagehide", stopPolling);
 })();
