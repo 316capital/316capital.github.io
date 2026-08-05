@@ -1,7 +1,6 @@
-# 316 Capital — https://316cap.com
+# 316 Capital - https://316cap.com
 # Answer engines and AI assistants are explicitly welcome.
 
-# --- AI training / answer-engine crawlers -------------------------------
 User-agent: GPTBot
 Allow: /
 
@@ -44,9 +43,6 @@ Allow: /
 User-agent: Amazonbot
 Allow: /
 
-User-agent: Bytespider
-Allow: /
-
 User-agent: meta-externalagent
 Allow: /
 
@@ -59,7 +55,6 @@ Allow: /
 User-agent: omgili
 Allow: /
 
-# --- Everyone else -------------------------------------------------------
 User-agent: *
 Allow: /
 

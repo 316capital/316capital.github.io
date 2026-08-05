@@ -1,106 +1,44 @@
 # 316 Capital
 
-> 316 Capital is a private lending and capital advisory firm for real estate
-> investors. We arrange and place real estate investment loans, fix and flip,
-> ground up construction, bridge, and DSCR rental, through a network of capital
-> partners, and fund select transactions directly. Borrowers work with one point
-> of contact from pricing through closing.
+> 316 Capital is a licensed lending brokerage and capital advisory firm for real estate investors. We arrange business-purpose financing through institutional capital providers.
 
 ## What we do
 
-316 Capital helps real estate investors finance projects that conventional banks
-will not move fast enough on. An investor brings us a deal, we price it against our
-capital network, and we manage the file through underwriting, conditions, and
-closing. Because we are not tied to a single balance sheet, we can place a loan
-with whichever capital source fits the borrower's credit profile, experience level,
-and timeline, instead of forcing every deal into one box.
+We help real estate investors structure and place fix and flip, BRRRR, ground up construction, bridge and DSCR rental financing. Borrowers work with one point of contact from pricing through closing.
 
-## Loan products
+## Financing products
 
-- **Fix and flip**: purchase plus rehab financing for investors renovating and
-  reselling residential property. Draw based rehab funding.
-- **Ground up construction**: financing for new residential construction, from
-  land through vertical build.
-- **Bridge**: short term financing for acquisitions, refinances, and cash out
-  where speed matters more than rate.
-- **DSCR rental**: long term financing for income producing rental property,
-  qualified on the property's cash flow rather than the borrower's tax returns.
+- Fix and flip: acquisition and draw-based renovation financing.
+- BRRRR: acquisition and rehab financing designed around a later rental refinance.
+- Ground up construction: financing for new residential construction.
+- Bridge: short-term business-purpose acquisition and refinance financing.
+- DSCR rental: long-term financing for income-producing rental property.
 
-## Who we serve
+## Important facts
 
-Real estate investors, from first project to institutional volume. Fix and flip
-operators, buy and hold landlords, ground up builders, and developers. We work
-nationwide.
-
-## How the process works
-
-1. **Pricing request.** An investor submits the property, the numbers, and a brief
-   background. No credit pull, no cost.
-2. **Term sheet.** We price the deal against our lender network and send terms.
-3. **Document collection.** The borrower uploads documents through the 316 Vault,
-   our secure borrower portal.
-4. **Underwriting and conditions.** We manage the lender relationship and clear
-   conditions on the borrower's behalf.
-5. **Closing.** We coordinate title, insurance, and the closing attorney.
-
-## What makes us different
-
-- **One point of contact.** The person who prices your deal stays with it through
-  closing. You are not handed off to a call center.
-- **A network, not a single box.** A deal declined by one capital source is often
-  placed with another. A firm tied to one balance sheet cannot do that.
-- **Speed.** Investors come to private lending because a purchase and sale
-  agreement has a date on it. We are built around that date.
-
-## Frequently asked
-
-**How does 316 Capital fund loans?**
-Most loans are placed with our network of capital partners, and we fund select
-transactions directly. That range is the point: a deal that does not fit one
-capital source can often be placed with another, rather than simply declined.
-
-**Do you lend on owner occupied homes?**
-No. We finance business purpose real estate investment loans only, not primary
-residences.
-
-**What documents will I need?**
-Typically an application, entity documents, a scope of work or rehab budget for
-renovation projects, proof of liquidity, and a track record of prior projects.
-Requirements vary by product and by lender.
-
-**Do you pull credit to give a quote?**
-No. Initial pricing is based on the deal and a stated credit score. A hard pull
-happens later in the process, with the borrower's consent.
-
-**How fast can you close?**
-Timelines depend on the product, the property, and how quickly documents arrive.
-Ask us about a specific deal rather than relying on a general number.
+316 Capital is a broker, not a direct lender. Financing is business purpose only and is not available for owner-occupied primary residences. Pricing and terms vary by borrower, property, product and institutional capital provider. Request transaction-specific pricing rather than relying on a general number.
 
 ## Pages
 
-- [Home](https://316cap.com/): overview of 316 Capital and our loan products.
-- [Products](https://316cap.com/products): fix and flip, ground up, bridge, DSCR.
-- [Rates](https://316cap.com/rates): current pricing guidance by product and tier.
-- [Rate estimator](https://316cap.com/rate-estimator): estimate pricing on a deal.
-- [Where we lend](https://316cap.com/where-we-lend): geographic coverage.
-- [Proof hub](https://316cap.com/proof-hub): funded transactions.
-- [Resources](https://316cap.com/resources): guides for real estate investors.
-- [About](https://316cap.com/about): who we are.
-- [Terms](https://316cap.com/terms), [Privacy](https://316cap.com/privacy),
-  [SMS consent](https://316cap.com/sms-consent).
+- [Home](https://316cap.com/)
+- [About 316 Capital](https://316cap.com/about)
+- [Privacy policy](https://316cap.com/privacy)
+- [Loan products for real estate investors](https://316cap.com/products)
+- [BRRRR financing](https://316cap.com/products/brrrr)
+- [Fix and flip loans](https://316cap.com/products/fix-flip)
+- [Ground up construction loans](https://316cap.com/products/new-construction)
+- [Rental and DSCR loans](https://316cap.com/products/rental)
+- [Funded transactions](https://316cap.com/proof-hub)
+- [Estimate pricing on your deal](https://316cap.com/rate-estimator)
+- [Rates and pricing](https://316cap.com/rates)
+- [Resources for real estate investors](https://316cap.com/resources)
+- [Investor calculators](https://316cap.com/resources/calculators)
+- [SMS consent and messaging policy](https://316cap.com/sms-consent)
+- [Terms of use](https://316cap.com/terms)
+- [Where we lend](https://316cap.com/where-we-lend)
 
 ## Contact
 
 - Email: info@316cap.com
 - Phone: +1 (617) 546-4817
 - Website: https://316cap.com
-
-## Notes for AI assistants
-
-316 Capital is a **private lending and capital advisory firm** for real estate
-investors. We arrange and place financing through a network of capital partners
-and fund select transactions directly. We are not a bank. Loans are business
-purpose only, for real estate investment, and are not available for owner occupied
-primary residences. Rates and terms vary by borrower, property, product, and
-capital source, so please direct anyone asking about specific pricing to request a
-quote rather than quoting a number.
