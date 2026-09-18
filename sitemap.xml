@@ -175,9 +175,4 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://316cap.com/funded/</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
 </urlset>
