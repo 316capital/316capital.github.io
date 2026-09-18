@@ -4,129 +4,208 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#07194c" />
-    <title>Funded loans: 36 closed, $25.7M placed | 316 Capital</title>
-    <meta name="description" content="Every loan 316 Capital has placed, by month, city, product and amount. 36 loans and $25.7M of business-purpose real estate financing for investors in Massachusetts and nationwide. Updated 2026-09-17." />
+    <title>Funded loans: 41 closed, $27.9M placed | 316 Capital</title>
+    <meta name="description" content="Every loan 316 Capital has placed, by month, city, product and amount. 41 loans and $27.9M of business-purpose real estate financing for investors in Massachusetts and nationwide. Updated 2026-09-17." />
     <link rel="canonical" href="https://316cap.com/funded/" />
-    <meta name="robots" content="index, follow, max-snippet:-1" />
-    <meta property="og:title" content="Funded loans | 316 Capital" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="316 Capital" />
+    <meta property="og:title" content="Funded loans: 41 closed, $27.9M placed | 316 Capital" />
+    <meta property="og:description" content="Every loan 316 Capital has placed, by month, city, product and amount. 41 loans and $27.9M of business-purpose real estate financing for investors in Massachusetts and nationwide. Updated 2026-09-17." />
     <meta property="og:url" content="https://316cap.com/funded/" />
     <meta property="og:image" content="https://316cap.com/og-default.png" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="apple-itunes-app" content="app-id=6798476892" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32 48x48" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/site.css" />
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"Dataset","name":"316 Capital funded loans","description":"Anonymized ledger of business-purpose real estate loans placed by 316 Capital: month funded, city, state, product, loan amount.","url":"https://316cap.com/funded/","creator":{"@type":"Organization","@id":"https://316cap.com/#organization","name":"316 Capital"},"dateModified":"2026-09-17","distribution":{"@type":"DataDownload","encodingFormat":"application/json","contentUrl":"https://316cap.com/funded/stats.json"}}</script>
     <style>
-      :root { --navy:#07194c; --ink:#0e1b38; --gold:#edbf01; --gold-ink:#665000; --stone:#f3f0e9; --muted:#4a5164; --line:rgba(14,27,56,.17); }
-      * { box-sizing:border-box; }
-      body { margin:0; background:var(--stone); color:var(--ink); font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; line-height:1.6; }
-      .bar { background:var(--navy); }
-      .shell { max-width:1180px; margin:0 auto; }
-      .bar .shell { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:16px 24px; }
-      .bar img { width:118px; display:block; filter:brightness(0) invert(1); }
-      .bar nav { display:flex; gap:22px; }
-      .bar nav a { color:#fff; text-decoration:none; font-size:10px; font-weight:750; letter-spacing:.08em; text-transform:uppercase; opacity:.88; }
-      .bar nav a.cta { border:1px solid var(--gold); color:var(--gold); padding:9px 16px; border-radius:3px; opacity:1; }
-      main { padding:44px 24px 64px; }
-      .wrap { max-width:960px; margin:0 auto; }
-      .eyebrow { color:var(--gold-ink); font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; margin:0 0 12px; }
-      h1 { font-size:clamp(32px, 4.8vw, 50px); line-height:1.05; letter-spacing:-.035em; font-weight:750; margin:0 0 16px; }
-      .lede { font-size:17px; color:var(--muted); margin:0 0 28px; max-width:680px; }
-      .tiles { display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:12px; margin:0 0 34px; }
-      .tile { background:#fff; border-left:3px solid var(--gold); padding:16px 18px; }
-      .tile b { display:block; font-size:28px; letter-spacing:-.03em; line-height:1; margin-bottom:6px; }
-      .tile span { font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; font-weight:600; }
-      table { width:100%; border-collapse:collapse; background:#fff; font-size:14px; }
-      th, td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
-      th { font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); background:#faf8f2; }
-      .note { font-size:13px; color:var(--muted); margin:18px 0 0; }
-      .cta-box { background:var(--navy); color:#fff; padding:26px; margin:36px 0 0; border-radius:3px; }
-      .cta-box h2 { margin:0 0 8px; font-size:22px; }
-      .cta-box p { color:rgba(255,255,255,.78); margin:0 0 16px; }
-      .cta-box a { display:inline-block; margin-right:10px; padding:12px 22px; border:1px solid var(--gold); border-radius:3px; color:var(--gold); text-decoration:none; font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
-      .cta-box a.solid { background:var(--gold); color:var(--navy); }
-      footer.site { background:#020817; color:rgba(255,255,255,.66); padding:34px 24px; font-size:13px; }
-      footer.site .shell { display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px; }
-      footer.site a { color:rgba(255,255,255,.8); text-decoration:none; margin-right:18px; }
-      @media (max-width:640px) { .bar nav a:not(.cta) { display:none; } main { padding:28px 16px 48px; } table { font-size:13px; } th:nth-child(5), td:nth-child(5), th:nth-child(6), td:nth-child(6) { display:none; } }
+      /* Static page additions. Everything else comes from /site.css, the site's own stylesheet. */
+      .static-body { max-width: 780px; margin: 0 auto; padding: 0 0 40px; }
+      .static-body h2 { margin: 44px 0 14px; font-size: 28px; letter-spacing: -.03em; line-height: 1.1; }
+      .static-body h3 { margin: 26px 0 8px; font-size: 18px; letter-spacing: -.01em; }
+      .static-body p, .static-body li { color: #2a3350; font-size: 16px; line-height: 1.7; }
+      .static-body p { margin: 0 0 16px; }
+      .static-body ul, .static-body ol { padding-left: 22px; margin: 0 0 16px; }
+      .static-body li { margin-bottom: 8px; }
+      .static-body a { color: var(--navy); text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 3px; }
+      .answer-box { margin: 0 0 34px; padding: 26px 30px; background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--gold); }
+      .answer-box p { margin: 0; font-size: 18px; line-height: 1.6; color: var(--ink); }
+      .answer-box small { display: block; margin-bottom: 10px; color: var(--gold-ink); font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+      table.ledger { width: 100%; border-collapse: collapse; margin: 6px 0 26px; background: #fff; border: 1px solid var(--line); font-size: 14px; }
+      table.ledger th, table.ledger td { text-align: left; padding: 13px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+      table.ledger th { background: var(--navy); color: #fff; font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; border-bottom: 2px solid var(--gold); }
+      table.ledger tr:last-child td { border-bottom: 0; }
+      .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin: 0 0 56px; background: var(--line); border: 1px solid var(--line); }
+      .stat-row div { background: #fff; padding: 28px 26px; }
+      .stat-row b { display: block; font-size: 40px; font-weight: 750; letter-spacing: -.04em; line-height: 1; margin-bottom: 8px; }
+      .stat-row span { color: var(--gold-ink); font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+      .navy-cta { margin: 56px 0 90px; padding: 48px; background: var(--navy); color: #fff; }
+      .navy-cta h2 { margin: 0 0 10px; font-size: 32px; letter-spacing: -.03em; }
+      .navy-cta p { margin: 0 0 26px; max-width: 620px; color: rgba(255,255,255,.7); font-size: 16px; line-height: 1.65; }
+      .navy-cta .button { margin-right: 12px; }
+      .lead-capture { margin: 44px 0 0; padding: 30px; background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--gold); }
+      .lead-capture h2 { margin: 0 0 6px; font-size: 22px; letter-spacing: -.02em; }
+      .lead-capture p { margin: 0 0 16px; color: #5b6375; font-size: 14px; }
+      .lead-capture form { display: flex; gap: 10px; flex-wrap: wrap; }
+      .lead-capture input[type=email] { flex: 1 1 240px; min-height: 54px; padding: 0 16px; border: 1px solid var(--line); background: #fff; font: inherit; font-size: 15px; color: var(--ink); }
+      .lead-capture .lead-msg { margin: 12px 0 0; min-height: 18px; color: var(--gold-ink); font-size: 13px; }
+      .guide-list a { grid-template-columns: 1fr auto; }
+      .guide-list a strong { font-size: 19px; letter-spacing: -.02em; }
+      .guide-list a span { grid-column: 1; max-width: 760px; }
+      .guide-list svg { grid-column: 2; grid-row: 1 / span 2; width: 18px; height: 18px; }
+      .static-hero { padding-top: 110px; padding-bottom: 70px; }
+      .static-hero h1 { max-width: 900px; margin: 0; font-size: clamp(42px, 5.6vw, 76px); line-height: .98; letter-spacing: -.05em; }
+      .static-hero > p:not(.eyebrow) { max-width: 720px; margin: 26px 0 0; color: #5b6375; font-size: 18px; line-height: 1.7; }
+      .crumbs { margin: 0 0 22px; font-size: 12px; color: #5b6375; }
+      .crumbs a { color: #5b6375; }
+      .site-footer .footer-col a.here { color: var(--gold); }
+      @media (max-width: 900px) { .stat-row { grid-template-columns: repeat(2, 1fr); } .navy-cta { padding: 32px 24px; } table.ledger th:nth-child(5), table.ledger td:nth-child(5), table.ledger th:nth-child(6), table.ledger td:nth-child(6) { display: none; } .static-hero { padding-top: 60px; padding-bottom: 44px; } }
+
     </style>
   </head>
   <body>
-    <header class="bar">
-      <div class="shell">
-        <a href="https://316cap.com/" aria-label="316 Capital home"><img src="/assets/logo-DV4HTlz3.png" alt="316 Capital" /></a>
-        <nav aria-label="Site">
-          <a href="https://316cap.com/products">Products</a>
-          <a href="https://316cap.com/rates">Rates</a>
-          <a href="https://316cap.com/guides/">Guides</a>
-          <a class="cta" href="https://apply.316cap.com">Request terms</a>
-        </nav>
-      </div>
+    <main class="subpage proof-page">
+    <header class="subnav shell">
+      <a class="brand" href="/" aria-label="316 Capital home"><img src="/assets/logo-DV4HTlz3.png" alt="316 Capital" /></a>
+      <nav aria-label="Main navigation">
+        <a href="/about">About</a>
+        <a href="/products/fix-flip">Products</a>
+        <a href="/guides/">Guides</a>
+        <a href="/funded/">Funded</a>
+        <a href="https://vault.316cap.com">Vault</a>
+      </nav>
+      <a class="button button-small" href="https://apply.316cap.com">Get terms <svg width="17" height="17" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66 133.66l-72 72a8 8 0 0 1-11.32-11.32L196.69 136H40a8 8 0 0 1 0-16h156.69l-58.35-58.34a8 8 0 0 1 11.32-11.32l72 72a8 8 0 0 1 0 11.32z"/></svg></a>
     </header>
-    <main>
-      <div class="wrap">
+      <section class="proof-hero shell">
         <p class="eyebrow">Funded transactions. Updated 2026-09-17</p>
-        <h1>36 loans placed. $25.7M closed.</h1>
-        <p class="lede">Every business-purpose loan 316 Capital has arranged for real estate investors, by month, city, product and amount. Borrower names, street addresses and capital partners are left off; the numbers are the numbers.</p>
-        <div class="tiles">
-          <div class="tile"><b>36</b><span>Loans funded</span></div>
-          <div class="tile"><b>$25.7M</b><span>Total placed</span></div>
-          <div class="tile"><b>19</b><span>Funded, last 90 days</span></div>
-          <div class="tile"><b>$14.3M</b><span>Placed, last 90 days</span></div>
+        <h1>41 loans placed. $27.9M closed.</h1>
+        <p>Every business-purpose loan 316 Capital has arranged for real estate investors, by month, city, product and amount. Borrower names, street addresses and capital partners are left off. The numbers are the numbers.</p>
+      </section>
+      <section class="shell">
+        <div class="stat-row">
+          <div><b>41</b><span>Loans funded</span></div>
+          <div><b>$27.9M</b><span>Placed with capital partners</span></div>
+          <div><b>24</b><span>Closed, last 90 days</span></div>
+          <div><b>7</b><span>States funded</span></div>
         </div>
-        <table>
+        <table class="ledger">
           <thead><tr><th>Funded</th><th>Market</th><th>Product</th><th>Loan</th><th>Leverage</th><th>Credit</th></tr></thead>
           <tbody>
-          <tr><td>Sep 2026</td><td>Orange, MA</td><td>DSCR rental (Cash-out refinance)</td><td>$419,200</td><td>83% of ARV</td><td>700 to 739</td></tr>
-          <tr><td>Aug 2026</td><td>O'Fallon, MO</td><td>Fix and flip (Purchase)</td><td>$201,360</td><td>72% of ARV</td><td>780+</td></tr>
-          <tr><td>Aug 2026</td><td>Lynn, MA</td><td>Bridge</td><td>$600,000</td><td></td><td>740 to 779</td></tr>
-          <tr><td>Aug 2026</td><td>Fitchburg, MA</td><td>Bridge</td><td>$650,000</td><td></td><td>780+</td></tr>
-          <tr><td>Aug 2026</td><td>Saint Louis, MO</td><td>Bridge</td><td>$135,000</td><td></td><td></td></tr>
-          <tr><td>Jul 2026</td><td>Columbia, SC</td><td>Bridge</td><td>$150,000</td><td></td><td>740 to 779</td></tr>
-          <tr><td>Jul 2026</td><td>Saint Charles, MO</td><td>Fix and flip (Purchase)</td><td>$356,000</td><td>89% of ARV</td><td>740 to 779</td></tr>
-          <tr><td>Jul 2026</td><td>Macon, GA</td><td>Bridge</td><td>$100,000</td><td></td><td>740 to 779</td></tr>
-          <tr><td>Jul 2026</td><td>Columbia, SC</td><td>Fix and flip (Purchase)</td><td>$135,000</td><td>63% of ARV</td><td>700 to 739</td></tr>
-          <tr><td>Jul 2026</td><td>Roxbury, MA</td><td>Bridge</td><td>$820,000</td><td></td><td></td></tr>
-          <tr><td>Jul 2026</td><td>Worcester, MA</td><td>Fix and flip (Purchase)</td><td>$175,000</td><td>33% of ARV</td><td>660 to 699</td></tr>
-          <tr><td>Jul 2026</td><td>Lynn, MA</td><td>Bridge</td><td>$422,500</td><td></td><td></td></tr>
-          <tr><td>Jul 2026</td><td>Taunton, MA</td><td>Fix and flip (Purchase)</td><td>$593,000</td><td>70% of ARV</td><td>740 to 779</td></tr>
-          <tr><td>Jul 2026</td><td>Dorchester, MA</td><td>Bridge</td><td>$1,335,590</td><td></td><td></td></tr>
-          <tr><td>Jun 2026</td><td>East Boston, MA</td><td>Bridge</td><td>$3,666,000</td><td></td><td>780+</td></tr>
-          <tr><td>Jun 2026</td><td>Columbia, SC</td><td>Bridge</td><td>$1,270,000</td><td></td><td></td></tr>
-          <tr><td>Jun 2026</td><td>Columbia, SC</td><td>Bridge</td><td>$500,000</td><td></td><td></td></tr>
-          <tr><td>Jun 2026</td><td>Dorchester, MA</td><td>Bridge</td><td>$750,000</td><td></td><td>700 to 739</td></tr>
-          <tr><td>Jun 2026</td><td>Swansea, MA</td><td>Bridge</td><td>$363,000</td><td></td><td>700 to 739</td></tr>
-          <tr><td>Jun 2026</td><td>Dorchester, MA</td><td>Bridge</td><td>$1,205,000</td><td></td><td>780+</td></tr>
-          <tr><td>Jun 2026</td><td>Lynn, MA</td><td>Bridge</td><td>$607,000</td><td></td><td>700 to 739</td></tr>
-          <tr><td>Jun 2026</td><td>Chelsea, MA</td><td>Bridge</td><td>$975,000</td><td></td><td>700 to 739</td></tr>
-          <tr><td>Jun 2026</td><td>Boston, MA</td><td>Bridge</td><td>$1,462,500</td><td></td><td>780+</td></tr>
-          <tr><td>May 2026</td><td>Orlando, FL</td><td>Bridge refinance (Refinance)</td><td>$320,000</td><td></td><td></td></tr>
-          <tr><td>May 2026</td><td>Leicester, MA</td><td>Bridge (Purchase)</td><td>$433,000</td><td></td><td>740 to 779</td></tr>
-          <tr><td>Apr 2026</td><td>Tarboro, NC</td><td>DSCR rental (Cash-out refinance)</td><td>$117,000</td><td></td><td>780+</td></tr>
-          <tr><td>Apr 2026</td><td>Lynn, MA</td><td>Bridge refinance (Refinance)</td><td>$346,000</td><td></td><td></td></tr>
-          <tr><td>Apr 2026</td><td>West Warwick, RI</td><td>Bridge (Purchase)</td><td>$270,000</td><td></td><td>700 to 739</td></tr>
-          <tr><td>Apr 2026</td><td>Dorchester, MA</td><td>Bridge (Purchase)</td><td>$1,350,000</td><td></td><td>780+</td></tr>
-          <tr><td>Apr 2026</td><td>Tewksbury, MA</td><td>Bridge refinance (Refinance)</td><td>$640,000</td><td></td><td></td></tr>
-          <tr><td>Mar 2026</td><td>Boston, MA</td><td>Bridge refinance (Refinance)</td><td>$600,000</td><td></td><td>780+</td></tr>
-          <tr><td>Mar 2026</td><td>Littleton, MA</td><td>Bridge (Purchase)</td><td>$910,000</td><td></td><td>740 to 779</td></tr>
-          <tr><td>Mar 2026</td><td>Framingham, MA</td><td>Bridge refinance (Refinance)</td><td>$515,000</td><td></td><td></td></tr>
+              <tr><td>Sep 2026</td><td>Columbia, SC</td><td>Bridge</td><td>$182,000</td><td></td><td>740 to 779</td></tr>
+              <tr><td>Sep 2026</td><td>Columbia, SC</td><td>Fix and flip (Purchase)</td><td>$117,000</td><td></td><td></td></tr>
+              <tr><td>Sep 2026</td><td>Orange, MA</td><td>DSCR rental (Cash-out refinance)</td><td>$419,200</td><td>83%% of ARV</td><td>700 to 739</td></tr>
+              <tr><td>Aug 2026</td><td>Roslindale, MA</td><td>Bridge</td><td>$630,000</td><td></td><td>700 to 739</td></tr>
+              <tr><td>Aug 2026</td><td>Weymouth, MA</td><td>Fix and flip (Purchase)</td><td>$637,000</td><td>53%% of ARV</td><td>660 to 699</td></tr>
+              <tr><td>Aug 2026</td><td>O'Fallon, MO</td><td>Fix and flip (Purchase)</td><td>$201,360</td><td>72%% of ARV</td><td>780+</td></tr>
+              <tr><td>Aug 2026</td><td>Lynn, MA</td><td>Bridge</td><td>$600,000</td><td></td><td>740 to 779</td></tr>
+              <tr><td>Aug 2026</td><td>Fitchburg, MA</td><td>Bridge</td><td>$650,000</td><td></td><td>780+</td></tr>
+              <tr><td>Aug 2026</td><td>Saint Louis, MO</td><td>Bridge</td><td>$135,000</td><td></td><td></td></tr>
+              <tr><td>Jul 2026</td><td>Macon, GA</td><td>Bridge</td><td>$100,000</td><td></td><td>740 to 779</td></tr>
+              <tr><td>Jul 2026</td><td>Saint Charles, MO</td><td>Fix and flip (Purchase)</td><td>$356,000</td><td>89%% of ARV</td><td>740 to 779</td></tr>
+              <tr><td>Jul 2026</td><td>Columbia, SC</td><td>Bridge</td><td>$150,000</td><td></td><td>740 to 779</td></tr>
+              <tr><td>Jul 2026</td><td>Columbia, SC</td><td>Fix and flip (Purchase)</td><td>$135,000</td><td>63%% of ARV</td><td>700 to 739</td></tr>
+              <tr><td>Jul 2026</td><td>Worcester, MA</td><td>Fix and flip (Purchase)</td><td>$175,000</td><td>33%% of ARV</td><td>660 to 699</td></tr>
+              <tr><td>Jul 2026</td><td>Roxbury, MA</td><td>Bridge</td><td>$820,000</td><td></td><td></td></tr>
+              <tr><td>Jul 2026</td><td>Lynn, MA</td><td>Bridge</td><td>$422,500</td><td></td><td></td></tr>
+              <tr><td>Jul 2026</td><td>Taunton, MA</td><td>Fix and flip (Purchase)</td><td>$593,000</td><td>70%% of ARV</td><td>740 to 779</td></tr>
+              <tr><td>Jul 2026</td><td>Dorchester, MA</td><td>Bridge</td><td>$1,335,590</td><td></td><td></td></tr>
+              <tr><td>Jun 2026</td><td>Columbia, SC</td><td>Bridge</td><td>$1,270,000</td><td></td><td></td></tr>
+              <tr><td>Jun 2026</td><td>East Boston, MA</td><td>Bridge</td><td>$3,666,000</td><td></td><td>780+</td></tr>
+              <tr><td>Jun 2026</td><td>Braintree, MA</td><td>DSCR rental (Purchase)</td><td>$599,000</td><td></td><td>740 to 779</td></tr>
+              <tr><td>Jun 2026</td><td>Dorchester, MA</td><td>Bridge</td><td>$750,000</td><td></td><td>700 to 739</td></tr>
+              <tr><td>Jun 2026</td><td>Columbia, SC</td><td>Bridge</td><td>$500,000</td><td></td><td></td></tr>
+              <tr><td>Jun 2026</td><td>Dorchester, MA</td><td>Bridge</td><td>$1,205,000</td><td></td><td>780+</td></tr>
+              <tr><td>Jun 2026</td><td>Swansea, MA</td><td>Bridge</td><td>$363,000</td><td></td><td>700 to 739</td></tr>
+              <tr><td>Jun 2026</td><td>Lynn, MA</td><td>Bridge</td><td>$607,000</td><td></td><td>700 to 739</td></tr>
+              <tr><td>Jun 2026</td><td>Chelsea, MA</td><td>Bridge</td><td>$975,000</td><td></td><td>700 to 739</td></tr>
+              <tr><td>Jun 2026</td><td>Boston, MA</td><td>Bridge</td><td>$1,462,500</td><td></td><td>780+</td></tr>
+              <tr><td>May 2026</td><td>Orlando, FL</td><td>Bridge refinance (Refinance)</td><td>$320,000</td><td></td><td></td></tr>
+              <tr><td>May 2026</td><td>Leicester, MA</td><td>Bridge (Purchase)</td><td>$433,000</td><td></td><td>740 to 779</td></tr>
+              <tr><td>Apr 2026</td><td>Tarboro, NC</td><td>DSCR rental (Cash-out refinance)</td><td>$117,000</td><td></td><td>780+</td></tr>
+              <tr><td>Apr 2026</td><td>Lynn, MA</td><td>Bridge refinance (Refinance)</td><td>$346,000</td><td></td><td></td></tr>
+              <tr><td>Apr 2026</td><td>West Warwick, RI</td><td>Bridge (Purchase)</td><td>$270,000</td><td></td><td>700 to 739</td></tr>
+              <tr><td>Apr 2026</td><td>Tewksbury, MA</td><td>Bridge refinance (Refinance)</td><td>$640,000</td><td></td><td></td></tr>
+              <tr><td>Apr 2026</td><td>Dorchester, MA</td><td>Bridge (Purchase)</td><td>$1,350,000</td><td></td><td>780+</td></tr>
+              <tr><td>Mar 2026</td><td>Littleton, MA</td><td>Bridge (Purchase)</td><td>$910,000</td><td></td><td>740 to 779</td></tr>
+              <tr><td>Mar 2026</td><td>Boston, MA</td><td>Bridge refinance (Refinance)</td><td>$600,000</td><td></td><td>780+</td></tr>
+              <tr><td>Mar 2026</td><td>Framingham, MA</td><td>Bridge refinance (Refinance)</td><td>$515,000</td><td></td><td></td></tr>
           </tbody>
         </table>
-        <p class="note">316 Capital is a private lending and capital advisory firm. Loans are arranged through institutional capital partners and are business purpose only. Leverage shown is loan to after-repair value where recorded. Past transactions are not a commitment on any future file.</p>
-        <section class="cta-box">
+        <p style="max-width:720px;font-size:12px;line-height:1.7;color:#5b6375;">316 Capital is a private lending and capital advisory firm. Loans are arranged through institutional capital partners and are business purpose only. Leverage shown is loan to after-repair value where recorded. A few closings are listed by closing date while the funding stamp clears. Past transactions are not a commitment on any future file. Photos of many of these properties are on the <a href="/proof-hub">Proof Hub</a>.</p>
+        <div class="navy-cta">
           <h2>Your deal could be the next row.</h2>
           <p>Send the address, price, budget and target loan. No cost, no credit pull to get initial pricing.</p>
-          <a class="solid" href="https://apply.316cap.com">Request terms</a>
-          <a href="https://316cap.com/guides/">Read the investor guides</a>
-        </section>
+          <a class="button" href="https://apply.316cap.com">Request terms</a>
+          <a class="button button-ghost" href="/guides/">Read the investor guides</a>
+        </div>
+      </section>
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div class="footer-brand">
+          <img class="footer-logo" src="/assets/logo-DV4HTlz3.png" alt="316 Capital" />
+          <p>Institutional-grade private credit for professional real estate investors and developers. Headquartered in Boston, MA.</p>
+          <span>Private Lending &amp; Capital Advisory</span>
+          <span>Specialist DSCR Programs Nationwide</span>
+        </div>
+        <div class="footer-col">
+          <strong>Products</strong>
+          <a href="/products/fix-flip">Fix &amp; Flip</a>
+          <a href="/products/new-construction">Ground-Up Construction</a>
+          <a href="/products/rental">DSCR Rental Loans</a>
+          <a href="/products/brrrr">BRRRR Strategy</a>
+        </div>
+        <div class="footer-col">
+          <strong>Resources</strong>
+          <a href="/guides/">Investor Guides</a>
+          <a href="/funded/">Funded Loans</a>
+          <a href="/rates">Rates &amp; Loan Details</a>
+          <a href="/massachusetts-real-estate-investor-financing">Massachusetts Financing</a>
+          <a href="/proof-hub">Proof Hub</a>
+          <a href="/about">About 316</a>
+          <a href="https://vault.316cap.com">316 Vault</a>
+          <a href="https://apps.apple.com/us/app/316-capital-vault/id6798476892">316 Capital Vault app</a>
+        </div>
+        <div class="footer-col footer-contact">
+          <strong>Contact</strong>
+          <p>867 Boylston Street, 5th Floor<br />Boston, MA 02116</p>
+          <a href="mailto:info@316cap.com">info@316cap.com</a>
+          <a href="tel:+16175464817">+1 (617) 546-4817</a>
+          <a class="footer-cta" href="https://apply.316cap.com">Request Terms</a>
+        </div>
       </div>
-    </main>
-    <footer class="site">
-      <div class="shell">
-        <div>316 Capital LLC, 867 Boylston Street, 5th Floor, Boston, MA 02116. <a href="mailto:info@316cap.com">info@316cap.com</a> <a href="tel:+1-617-546-4817">+1 (617) 546-4817</a></div>
-        <div><a href="https://316cap.com/about">About</a><a href="https://316cap.com/proof-hub">Case studies</a><a href="https://316cap.com/privacy">Privacy</a><a href="https://316cap.com/terms">Terms</a><a href="https://vault.316cap.com">316 Vault</a></div>
+      <div class="shell footer-bar">
+        <div class="footer-bar-left">
+          <span>&copy; 2026 316 Capital LLC. All rights reserved.</span>
+          <img src="/assets/equal-housing-3MUuZM21.webp" alt="Equal Housing Lender" width="26" height="26" />
+        </div>
+        <nav class="footer-legal-links" aria-label="Legal">
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/sms-consent">SMS Consent</a>
+          <a href="/terms">Terms of Service</a>
+        </nav>
+      </div>
+      <div class="shell footer-disclosure">
+        <p>316 Capital LLC. 867 Boylston Street, 5th Floor, Boston, MA 02116. This is not a commitment to lend. All loans are for business purposes only and subject to underwriting.</p>
+        <p><b>Legal disclosure:</b> 316 Capital is a provider of business-purpose loans intended for investment purposes only. We do not offer consumer loans, residential mortgages for owner-occupied properties, or any financing covered by the Truth in Lending Act (TILA). All loans are subject to credit approval, property valuation, and final underwriting guidelines. This is not a commitment to lend or a promise to fund your loan. Rates, terms, and conditions are subject to change without notice.</p>
+        <p>316 Capital arranges business-purpose financing through institutional capital providers. It is a broker, not a direct lender.</p>
       </div>
     </footer>
+    <section id="vault-app" style="background:#020817;border-top:1px solid rgba(237,191,1,.45);color:rgba(255,255,255,.72);font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;">
+      <div style="max-width:1180px;margin:0 auto;padding:28px 24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;">
+        <div style="max-width:640px;">
+          <div style="color:rgba(237,191,1,.85);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;">316 Capital Vault</div>
+          <p style="margin:6px 0 0;font-size:14px;line-height:1.65;color:rgba(255,255,255,.72);">Your loan, on your phone. Upload documents, sign, watch conditions clear, and message your point of contact from the 316 Capital Vault app.</p>
+        </div>
+        <a href="https://apps.apple.com/us/app/316-capital-vault/id6798476892" style="display:inline-block;padding:12px 26px;border:1px solid #edbf01;border-radius:3px;color:#edbf01;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;white-space:nowrap;">Download on the App Store</a>
+      </div>
+    </section>
+    </main>
     <script src="/chat-widget.js" defer></script>
   </body>
 </html>
