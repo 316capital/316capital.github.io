@@ -259,11 +259,11 @@
     <script>
     (function(){
       var f=document.getElementById('leadForm'),m=document.getElementById('leadMsg');if(!f)return;
-      var q=new URLSearchParams(location.search);
+      var q=new URLSearchParams(location.search),ft=(window.KT_SITE&&window.KT_SITE.utm())||{};
       f.addEventListener('submit',function(e){e.preventDefault();var b=f.querySelector('button'),em=f.email.value.trim();
         if(!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(em)){m.textContent='Enter a valid email.';return;}
         b.disabled=true;b.textContent='Sending';m.textContent='';
-        fetch('https://tejxacuehbhssqougufr.supabase.co/functions/v1/guide-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em,website:f.website.value,guide:'bridge-loans-for-real-estate-investors',title:document.title.replace(/ \| 316 Capital$/,''),page:location.href,referrer:document.referrer,utm_source:q.get('utm_source'),utm_medium:q.get('utm_medium'),utm_campaign:q.get('utm_campaign')})})
+        fetch('https://tejxacuehbhssqougufr.supabase.co/functions/v1/guide-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em,website:f.website.value,guide:'bridge-loans-for-real-estate-investors',title:document.title.replace(/ \| 316 Capital$/,''),page:location.href,referrer:document.referrer,utm_source:ft.utm_source||q.get('utm_source'),utm_medium:ft.utm_medium||q.get('utm_medium'),utm_campaign:ft.utm_campaign||q.get('utm_campaign'),landing_url:ft.landing_url||null,first_referrer:ft.first_referrer||null,visitor_id:ft.visitor_id||null})})
         .then(function(r){return r.json();}).then(function(j){if(j.ok){f.style.display='none';m.textContent='Sent. Check your inbox for what the desk needs, and reply with your deal when ready.';}else{m.textContent=j.error||'Something went wrong. Email info@316cap.com.';b.disabled=false;b.textContent='Send it';}})
         .catch(function(){m.textContent='Something went wrong. Email info@316cap.com.';b.disabled=false;b.textContent='Send it';});
       });
