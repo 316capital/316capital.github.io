@@ -76,6 +76,23 @@
         </ul></nav>
       </div>
     </noscript>
+    <section id="proof-band" style="background:#07194c;border-top:1px solid rgba(237,191,1,.35);color:#fff;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;">
+      <div style="max-width:1180px;margin:0 auto;padding:26px 24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;">
+        <div style="display:flex;flex-wrap:wrap;gap:28px 40px;">
+          <div><div data-stat="funded_total" style="font-size:30px;font-weight:750;letter-spacing:-.03em;line-height:1;">36</div><div style="margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(237,191,1,.85);">Loans funded</div></div>
+          <div><div data-stat="volume_total" style="font-size:30px;font-weight:750;letter-spacing:-.03em;line-height:1;">$25.7M</div><div style="margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(237,191,1,.85);">Placed with capital partners</div></div>
+          <div><div data-stat="funded_90d" style="font-size:30px;font-weight:750;letter-spacing:-.03em;line-height:1;">19</div><div style="margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(237,191,1,.85);">Closed in the last 90 days</div></div>
+          <div><div data-stat="states" style="font-size:30px;font-weight:750;letter-spacing:-.03em;line-height:1;">7</div><div style="margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(237,191,1,.85);">States funded</div></div>
+        </div>
+        <a href="https://316cap.com/funded/" style="display:inline-block;padding:12px 26px;border:1px solid #edbf01;border-radius:3px;color:#edbf01;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;white-space:nowrap;">See every funded loan</a>
+      </div>
+      <script>
+      (function(){fetch('/funded/stats.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(s){
+        var set=function(k,v){var e=document.querySelector('#proof-band [data-stat="'+k+'"]');if(e&&v!=null)e.textContent=v;};
+        set('funded_total',s.funded_total);set('volume_total','$'+(s.funded_volume_total/1e6).toFixed(1)+'M');set('funded_90d',s.funded_90d);set('states',(s.states||[]).length);
+      }).catch(function(){});})();
+      </script>
+    </section>
     <section id="vault-app" style="background:#020817;border-top:1px solid rgba(237,191,1,.45);color:rgba(255,255,255,.72);font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;">
       <div style="max-width:1180px;margin:0 auto;padding:28px 24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;">
         <div style="max-width:640px;">
