@@ -185,7 +185,6 @@
           <a href="/proof-hub">Proof Hub</a>
           <a href="/about">About 316</a>
           <a href="https://vault.316cap.com">316 Vault</a>
-          <a href="https://apps.apple.com/us/app/316-capital-vault/id6798476892">316 Capital Vault app</a>
         </div>
         <div class="footer-col footer-contact">
           <strong>Contact</strong>
@@ -212,14 +211,46 @@
         <p>316 Capital arranges business-purpose financing through institutional capital providers. It is a broker, not a direct lender.</p>
       </div>
     </footer>
-    <section id="vault-app" style="background:#020817;border-top:1px solid rgba(237,191,1,.45);color:rgba(255,255,255,.72);font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;">
-      <div style="max-width:1180px;margin:0 auto;padding:28px 24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;">
-        <div style="max-width:640px;">
-          <div style="color:rgba(237,191,1,.85);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;">316 Capital Vault</div>
-          <p style="margin:6px 0 0;font-size:14px;line-height:1.65;color:rgba(255,255,255,.72);">Your loan, on your phone. Upload documents, sign, watch conditions clear, and message your point of contact from the 316 Capital Vault app.</p>
+    <section id="site-extra" style="background:#020817;color:rgba(255,255,255,.72);border-top:1px solid rgba(255,255,255,.09);padding:44px 0 48px;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;">
+      <style>
+        #site-extra .shell{width:min(1240px,calc(100% - 64px));margin-inline:auto}
+        #site-extra .x-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:48px;align-items:start}
+        #site-extra .x-lab{display:block;margin:0 0 10px;color:rgba(255,255,255,.62);font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+        #site-extra .x-num{display:block;color:#fff;font-size:30px;font-weight:750;letter-spacing:-.04em;line-height:1}
+        #site-extra .x-sub{display:block;margin-top:8px;color:rgba(255,255,255,.5);font-size:12px;line-height:1.5}
+        #site-extra .x-row2{margin-top:36px;padding-top:28px;border-top:1px solid rgba(255,255,255,.09);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 32px}
+        #site-extra .x-row2 p{margin:6px 0 0;max-width:560px;color:rgba(255,255,255,.66);font-size:14px;line-height:1.7}
+        #site-extra .x-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+        #site-extra .x-btn{display:inline-flex;align-items:center;padding:12px 26px;border:1px solid #edbf01;border-radius:3px;color:#edbf01;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:.22s ease}
+        #site-extra .x-btn:hover{background:#edbf01;color:#07194c}
+        #site-extra .x-link{color:rgba(255,255,255,.6);font-size:12px;text-decoration:none;text-transform:uppercase;letter-spacing:.08em;font-weight:800}
+        #site-extra .x-link:hover{color:#edbf01}
+        @media(max-width:900px){#site-extra .x-grid{grid-template-columns:1fr 1fr;gap:28px}}
+        @media(max-width:520px){#site-extra .shell{width:calc(100% - 32px)}#site-extra .x-grid{grid-template-columns:1fr 1fr;gap:22px}#site-extra .x-num{font-size:26px}}
+      </style>
+      <div class="shell">
+        <div class="x-grid">
+          <div><span class="x-lab">Loans funded</span><span class="x-num" data-stat="funded_total">41</span><span class="x-sub">Placed through the 316 desk</span></div>
+          <div><span class="x-lab">Volume</span><span class="x-num" data-stat="volume_total">$27.9M</span><span class="x-sub">With capital partners</span></div>
+          <div><span class="x-lab">Last 90 days</span><span class="x-num" data-stat="funded_90d">24</span><span class="x-sub">Loans closed</span></div>
+          <div><span class="x-lab">Footprint</span><span class="x-num" data-stat="states">7</span><span class="x-sub">States funded, <a class="x-link" style="text-transform:none;letter-spacing:0;font-weight:600;color:#edbf01" href="/funded/">see every loan</a></span></div>
         </div>
-        <a href="https://apps.apple.com/us/app/316-capital-vault/id6798476892" style="display:inline-block;padding:12px 26px;border:1px solid #edbf01;border-radius:3px;color:#edbf01;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;white-space:nowrap;">Download on the App Store</a>
+        <div class="x-row2">
+          <div>
+            <span class="x-lab" style="margin-bottom:0;color:rgba(237,191,1,.85)">316 Capital Vault</span>
+            <p>Your loan, on your phone. Upload documents, sign, watch conditions clear, and message your point of contact from the 316 Capital Vault app.</p>
+          </div>
+          <div class="x-actions">
+            <a class="x-btn" href="https://apps.apple.com/us/app/316-capital-vault/id6798476892">Download on the App Store</a>
+          </div>
+        </div>
       </div>
+      <script>
+      (function(){fetch('/funded/stats.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(s){
+        var set=function(k,v){var e=document.querySelector('#site-extra [data-stat="'+k+'"]');if(e&&v!=null)e.textContent=v;};
+        set('funded_total',s.funded_total);set('volume_total','$'+(s.funded_volume_total/1e6).toFixed(1)+'M');set('funded_90d',s.funded_90d);set('states',(s.states||[]).length);
+      }).catch(function(){});})();
+      </script>
     </section>
     </main>
     <script>
