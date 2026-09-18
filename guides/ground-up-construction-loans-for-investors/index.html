@@ -60,6 +60,13 @@
       .cta-box a { display:inline-block; margin:0 10px 8px 0; padding:12px 22px; border:1px solid var(--gold); border-radius:3px; color:var(--gold); text-decoration:none; font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
       .cta-box a.solid { background:var(--gold); color:var(--navy); }
       .faq h3 { margin-top:20px; }
+      .lead { background:#fff; border:1px solid var(--line); border-top:3px solid var(--gold); padding:22px 24px; margin:36px 0 0; }
+      .lead h2 { margin:0 0 6px; font-size:20px; }
+      .lead p { margin:0 0 14px; font-size:14px; color:var(--muted); }
+      .lead form { display:flex; gap:8px; flex-wrap:wrap; }
+      .lead input[type=email] { flex:1 1 220px; padding:12px 14px; border:1px solid var(--line); border-radius:3px; font:inherit; font-size:15px; }
+      .lead button { padding:12px 22px; background:var(--navy); color:#fff; border:0; border-radius:3px; font:inherit; font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; cursor:pointer; }
+      .lead-msg { margin:10px 0 0; font-size:13px; color:var(--gold-ink); min-height:18px; }
       .related ul { list-style:none; padding:0; }
       .related li { padding:8px 0; border-bottom:1px solid var(--line); }
       .disclosure { font-size:13px; color:var(--muted); margin-top:34px; border-top:1px solid var(--line); padding-top:16px; }
@@ -119,6 +126,16 @@
         <p>A construction loan closes in 2 to 4 weeks once plans, budget and builder are in hand, longer if an as-complete appraisal is required. Terms run 12 to 24 months and extensions are usually available for a fee if the project runs long, which most do.</p>
         <h2>How 316 Capital places construction loans</h2>
         <p>316 Capital is a private lending and capital advisory firm. Construction is where the choice of capital partner matters most, because leverage, draw speed and appetite for 5+ unit or condo projects differ widely between sources. We place the project with the partner built for it and stay on the file through every draw.</p>
+        <section class="lead" id="lead">
+          <h2>Get priced on this loan type</h2>
+          <p>Leave your email and the 316 desk sends the five things it takes to get a term sheet within one business day. No cost, no credit pull, no list.</p>
+          <form id="leadForm" novalidate>
+            <input type="email" name="email" placeholder="you@company.com" required autocomplete="email" />
+            <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true" />
+            <button type="submit">Send it</button>
+          </form>
+          <p class="lead-msg" id="leadMsg"></p>
+        </section>
         <section class="cta-box">
           <h2>Price your deal, no cost, no credit pull</h2>
           <p>Send the address, purchase price, budget and target loan amount. One point of contact from pricing through closing.</p>
@@ -162,6 +179,19 @@
         <a href="https://apps.apple.com/us/app/316-capital-vault/id6798476892">Download on the App Store</a>
       </div>
     </section>
+    <script>
+    (function(){
+      var f=document.getElementById('leadForm'),m=document.getElementById('leadMsg');if(!f)return;
+      var q=new URLSearchParams(location.search);
+      f.addEventListener('submit',function(e){e.preventDefault();var b=f.querySelector('button'),em=f.email.value.trim();
+        if(!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(em)){m.textContent='Enter a valid email.';return;}
+        b.disabled=true;b.textContent='Sending';m.textContent='';
+        fetch('https://tejxacuehbhssqougufr.supabase.co/functions/v1/guide-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em,website:f.website.value,guide:'ground-up-construction-loans-for-investors',title:document.title.replace(/ \| 316 Capital$/,''),page:location.href,referrer:document.referrer,utm_source:q.get('utm_source'),utm_medium:q.get('utm_medium'),utm_campaign:q.get('utm_campaign')})})
+        .then(function(r){return r.json();}).then(function(j){if(j.ok){f.style.display='none';m.textContent='Sent. Check your inbox for what the desk needs, and reply with your deal when ready.';}else{m.textContent=j.error||'Something went wrong. Email info@316cap.com.';b.disabled=false;b.textContent='Send it';}})
+        .catch(function(){m.textContent='Something went wrong. Email info@316cap.com.';b.disabled=false;b.textContent='Send it';});
+      });
+    })();
+    </script>
     <script src="/chat-widget.js" defer></script>
   </body>
 </html>
