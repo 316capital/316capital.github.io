@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#07194c" />
+    <title>How do lenders calculate ARV, LTC and LTV on an investor loan? | 316 Capital</title>
+    <meta name="description" content="After-repair value, loan to cost and loan to value explained for fix and flip, construction and rental loans, with the formulas, typical 2026 caps, and a worked example showing which test limits the loan." />
+    <link rel="canonical" href="https://316cap.com/guides/arv-ltc-ltv-explained/" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="How do lenders calculate ARV, LTC and LTV on an investor loan?" />
+    <meta property="og:description" content="After-repair value, loan to cost and loan to value explained for fix and flip, construction and rental loans, with the formulas, typical 2026 caps, and a worked example showing which test limits the loan." />
+    <meta property="og:url" content="https://316cap.com/guides/arv-ltc-ltv-explained/" />
+    <meta property="og:image" content="https://316cap.com/og-default.png" />
+    <meta property="og:site_name" content="316 Capital" />
+    <meta property="article:modified_time" content="2026-09-18T12:00:00-04:00" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="apple-itunes-app" content="app-id=6798476892" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32 48x48" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://316cap.com/#organization","name":"316 Capital","url":"https://316cap.com/","logo":"https://316cap.com/icon-512.png","email":"info@316cap.com","telephone":"+1-617-546-4817","address":{"@type":"PostalAddress","streetAddress":"867 Boylston Street, 5th Floor","addressLocality":"Boston","addressRegion":"MA","postalCode":"02116","addressCountry":"US"},"description":"316 Capital is a private lending and capital advisory firm that arranges fix and flip, ground up construction, bridge and DSCR rental financing for real estate investors through institutional capital partners."},{"@type":"Article","@id":"https://316cap.com/guides/arv-ltc-ltv-explained/#article","headline":"How do lenders calculate ARV, LTC and LTV on an investor loan?","description":"After-repair value, loan to cost and loan to value explained for fix and flip, construction and rental loans, with the formulas, typical 2026 caps, and a worked example showing which test limits the loan.","url":"https://316cap.com/guides/arv-ltc-ltv-explained/","mainEntityOfPage":"https://316cap.com/guides/arv-ltc-ltv-explained/","dateModified":"2026-09-18","datePublished":"2026-09-18","inLanguage":"en-US","author":{"@id":"https://316cap.com/#organization"},"publisher":{"@id":"https://316cap.com/#organization"},"about":{"@type":"Thing","name":"Real estate investor financing"}},{"@type":"FAQPage","@id":"https://316cap.com/guides/arv-ltc-ltv-explained/#faq","mainEntity":[{"name": "What is a good ARV margin for a flip?", "@type": "Question", "acceptedAnswer": {"text": "Most experienced flippers buy so that purchase plus rehab plus carrying and selling costs is at or below 75% of ARV, which is close to the lender's cap and leaves a real profit. Deals above 80% of ARV are thin and usually do not finance at full leverage.", "@type": "Answer"}}, {"name": "Does the lender use my ARV or the appraiser's?", "@type": "Question", "acceptedAnswer": {"text": "The appraiser's or the broker's. Your number is a starting point for pricing, and if the valuation comes in lower the loan is resized to the lender's caps. Bring comps that support your number and a clear scope so the appraiser can see the finished product.", "@type": "Answer"}}, {"name": "What is the difference between LTV and LTARV?", "@type": "Question", "acceptedAnswer": {"text": "LTV uses the property's value as it sits today. LTARV uses the value after the planned renovation. Rehab and construction loans are sized on LTARV; bridge and rental loans on LTV.", "@type": "Answer"}}, {"name": "Can I count sweat equity or a below-market purchase as equity?", "@type": "Question", "acceptedAnswer": {"text": "Not on the LTC test, which uses actual cost. A below-market purchase helps on the LTARV test, because the loan is a percentage of value rather than price, and on a refinance after seasoning when the lender uses appraised value.", "@type": "Answer"}}, {"name": "How do lenders calculate LTC on land I already own?", "@type": "Question", "acceptedAnswer": {"text": "If you have owned the land for 12 months or more, most use the current appraised value as your cost basis. Less than 12 months and they typically use what you paid plus documented improvements.", "@type": "Answer"}}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"316 Capital","item":"https://316cap.com/"},{"@type":"ListItem","position":2,"name":"Investor guides","item":"https://316cap.com/guides/"},{"@type":"ListItem","position":3,"name":"How do lenders calculate ARV, LTC and LTV on an investor loan?","item":"https://316cap.com/guides/arv-ltc-ltv-explained/"}]}]}</script>
+    <style>
+      :root { --navy:#07194c; --ink:#0e1b38; --gold:#edbf01; --gold-ink:#665000; --stone:#f3f0e9; --muted:#4a5164; --line:rgba(14,27,56,.17); }
+      * { box-sizing:border-box; }
+      html { -webkit-text-size-adjust:100%; }
+      body { margin:0; background:var(--stone); color:var(--ink); font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; line-height:1.65; }
+      a { color:var(--navy); }
+      .bar { background:var(--navy); color:#fff; }
+      .bar .shell { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:16px 24px; }
+      .shell { max-width:1180px; margin:0 auto; }
+      .bar img { width:118px; display:block; filter:brightness(0) invert(1); }
+      .bar nav { display:flex; gap:22px; flex-wrap:wrap; }
+      .bar nav a { color:#fff; text-decoration:none; font-size:10px; font-weight:750; letter-spacing:.08em; text-transform:uppercase; opacity:.88; }
+      .bar nav a.cta { border:1px solid var(--gold); color:var(--gold); padding:9px 16px; border-radius:3px; opacity:1; }
+      main { padding:40px 24px 64px; }
+      article { max-width:760px; margin:0 auto; }
+      .crumbs { font-size:12px; color:var(--muted); margin:0 0 22px; }
+      .crumbs a { color:var(--muted); }
+      .eyebrow { color:var(--gold-ink); font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; margin:0 0 12px; }
+      h1 { font-size:clamp(30px, 4.6vw, 46px); line-height:1.08; letter-spacing:-.035em; font-weight:750; margin:0 0 22px; }
+      .answer { background:#fff; border-left:3px solid var(--gold); padding:18px 22px; margin:0 0 30px; font-size:17px; line-height:1.6; }
+      .answer p { margin:0; }
+      h2 { font-size:24px; letter-spacing:-.02em; margin:38px 0 12px; font-weight:750; }
+      h3 { font-size:17px; margin:24px 0 6px; font-weight:700; }
+      p, li { font-size:16px; }
+      p { margin:0 0 14px; }
+      ul, ol { padding-left:22px; margin:0 0 14px; }
+      li { margin-bottom:6px; }
+      table { width:100%; border-collapse:collapse; margin:8px 0 22px; background:#fff; font-size:15px; }
+      th, td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+      th { font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+      .cta-box { background:var(--navy); color:#fff; padding:26px 26px; margin:36px 0; border-radius:3px; }
+      .cta-box h2 { color:#fff; margin:0 0 8px; font-size:22px; }
+      .cta-box p { color:rgba(255,255,255,.78); margin:0 0 16px; }
+      .cta-box a { display:inline-block; margin:0 10px 8px 0; padding:12px 22px; border:1px solid var(--gold); border-radius:3px; color:var(--gold); text-decoration:none; font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
+      .cta-box a.solid { background:var(--gold); color:var(--navy); }
+      .faq h3 { margin-top:20px; }
+      .related ul { list-style:none; padding:0; }
+      .related li { padding:8px 0; border-bottom:1px solid var(--line); }
+      .disclosure { font-size:13px; color:var(--muted); margin-top:34px; border-top:1px solid var(--line); padding-top:16px; }
+      footer.site { background:#020817; color:rgba(255,255,255,.66); padding:34px 24px; font-size:13px; }
+      footer.site .shell { display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px; }
+      footer.site a { color:rgba(255,255,255,.8); text-decoration:none; margin-right:18px; }
+      .vault { background:#020817; border-top:1px solid rgba(237,191,1,.45); color:rgba(255,255,255,.72); }
+      .vault .shell { padding:24px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:18px; }
+      .vault .k { color:rgba(237,191,1,.85); font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+      .vault p { margin:6px 0 0; font-size:14px; color:rgba(255,255,255,.72); }
+      .vault a { display:inline-block; padding:12px 26px; border:1px solid var(--gold); border-radius:3px; color:var(--gold); font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; text-decoration:none; white-space:nowrap; }
+      @media (max-width:640px) { .bar nav a:not(.cta) { display:none; } main { padding:28px 16px 48px; } }
+    </style>
+  </head>
+  <body>
+    <header class="bar">
+      <div class="shell">
+        <a href="https://316cap.com/" aria-label="316 Capital home"><img src="/assets/logo-DV4HTlz3.png" alt="316 Capital" /></a>
+        <nav aria-label="Site">
+          <a href="https://316cap.com/products">Products</a>
+          <a href="https://316cap.com/rates">Rates</a>
+          <a href="https://316cap.com/where-we-lend">Where we lend</a>
+          <a href="https://316cap.com/guides/">Guides</a>
+          <a class="cta" href="https://apply.316cap.com">Request terms</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <article>
+        <p class="crumbs"><a href="https://316cap.com/">316 Capital</a> / <a href="https://316cap.com/guides/">Investor guides</a></p>
+        <p class="eyebrow">Investor guide. Updated September 2026</p>
+        <h1>How do lenders calculate ARV, LTC and LTV on an investor loan?</h1>
+        <div class="answer"><p>Lenders size an investor loan with three tests and the lowest result wins. Loan to cost (LTC) is loan divided by purchase price plus renovation budget, typically capped at 85% to 90%. Loan to after-repair value (LTARV) is loan divided by the appraised value once the work is done, typically capped at 70% to 75%. Loan to value (LTV) is loan divided by current value, used on bridge and DSCR loans and capped around 75% to 80%. ARV itself comes from sold comparables adjusted to the finished condition, not from your projection.</p></div>
+        <h2>The three formulas</h2>
+        <table>
+          <tr><th>Ratio</th><th>Formula</th><th>Used on</th><th>Typical 2026 cap</th></tr>
+          <tr><td>LTC (loan to cost)</td><td>Loan / (purchase price + rehab budget)</td><td>Fix and flip, construction</td><td>85% to 90% experienced; 75% to 85% first project</td></tr>
+          <tr><td>LTARV (loan to after-repair value)</td><td>Loan / appraised value after the work</td><td>Fix and flip, BRRRR, construction (as-complete)</td><td>70% to 75%; 65% to 70% on construction</td></tr>
+          <tr><td>LTV (loan to value)</td><td>Loan / current appraised value (or price, if lower)</td><td>Bridge, DSCR, cash-out</td><td>75% to 80% purchase; 65% to 80% cash-out</td></tr>
+          <tr><td>LTP (loan to purchase)</td><td>Loan at closing / purchase price</td><td>The day-one advance on fix and flip</td><td>80% to 90%</td></tr>
+        </table>
+        <h2>A worked example: which test limits the loan</h2>
+        <p>Purchase $400,000. Rehab $150,000. ARV $700,000. Experienced borrower.</p>
+        <ul>
+          <li>LTC test at 90%: 0.90 x $550,000 = $495,000</li>
+          <li>LTARV test at 70%: 0.70 x $700,000 = $490,000</li>
+          <li>Purchase advance at 90%: $360,000 at closing plus $150,000 rehab holdback = $510,000</li>
+        </ul>
+        <p>The loan is $490,000, because LTARV is the binding constraint. The lender will usually reduce the purchase advance to $340,000 and keep the full $150,000 rehab holdback, so you bring $60,000 to closing plus points and costs. If the ARV had appraised at $750,000, the LTC test would have bound instead at $495,000.</p>
+        <h2>How ARV is actually determined</h2>
+        <p>An appraiser or broker finds three to six sold comparables from the last 6 months, within roughly a mile in urban markets, that match the finished product: same bedroom count, similar square footage and condition after your renovation. Adjustments are made for differences, and the result is the ARV. Your pro forma is not an input. The things that move it:</p>
+        <ul>
+          <li><strong>Scope of work.</strong> The appraiser values what your scope says will exist. A vague scope produces a conservative ARV.</li>
+          <li><strong>Condition of comps.</strong> Renovated sales, not the whole market. A block with no recent renovated sales makes a high ARV hard to support.</li>
+          <li><strong>Additions and unit count.</strong> Adding a unit or finishing a basement counts only if it is permitted and the comps reflect it.</li>
+          <li><strong>Market trend.</strong> In a softening market, appraisers apply time adjustments that trim older comps.</li>
+        </ul>
+        <h2>Why lenders cap at 70% to 75% of ARV</h2>
+        <p>It is the margin for three things going wrong at once: the renovation costs more, the sale takes longer, and the market moves a few points. At 70% LTARV a property can sell 15% under the appraised number, after a year of interest and selling costs, and the loan is still repaid. That margin is what allows the lender to fund 100% of the renovation and qualify on the asset rather than your income.</p>
+        <h2>Cash-out LTV and seasoning</h2>
+        <p>On a refinance, LTV uses the current appraised value, but only after a seasoning period on many programs (commonly 3 to 6 months from purchase). Before that, the lender uses your purchase price plus documented improvements as the value. Some sources waive seasoning for a documented renovation, which is the basis of a fast BRRRR.</p>
+        <h2>How 316 Capital uses these numbers</h2>
+        <p>316 Capital is a private lending and capital advisory firm. Every capital partner sets its own caps, and a deal that is LTARV-bound at one source may be LTC-bound at another with a different result. We run the numbers across the network before quoting, which is why our initial terms come with the loan amount, not just a rate.</p>
+        <section class="cta-box">
+          <h2>Price your deal, no cost, no credit pull</h2>
+          <p>Send the address, purchase price, budget and target loan amount. One point of contact from pricing through closing.</p>
+          <a class="solid" href="https://apply.316cap.com">Request terms</a>
+          <a href="https://316cap.com/rate-estimator">Estimate pricing</a>
+        </section>
+        <section class="faq">
+          <h2>Common questions</h2>
+        <h3>What is a good ARV margin for a flip?</h3>
+        <p>Most experienced flippers buy so that purchase plus rehab plus carrying and selling costs is at or below 75% of ARV, which is close to the lender's cap and leaves a real profit. Deals above 80% of ARV are thin and usually do not finance at full leverage.</p>
+        <h3>Does the lender use my ARV or the appraiser's?</h3>
+        <p>The appraiser's or the broker's. Your number is a starting point for pricing, and if the valuation comes in lower the loan is resized to the lender's caps. Bring comps that support your number and a clear scope so the appraiser can see the finished product.</p>
+        <h3>What is the difference between LTV and LTARV?</h3>
+        <p>LTV uses the property's value as it sits today. LTARV uses the value after the planned renovation. Rehab and construction loans are sized on LTARV; bridge and rental loans on LTV.</p>
+        <h3>Can I count sweat equity or a below-market purchase as equity?</h3>
+        <p>Not on the LTC test, which uses actual cost. A below-market purchase helps on the LTARV test, because the loan is a percentage of value rather than price, and on a refinance after seasoning when the lender uses appraised value.</p>
+        <h3>How do lenders calculate LTC on land I already own?</h3>
+        <p>If you have owned the land for 12 months or more, most use the current appraised value as your cost basis. Less than 12 months and they typically use what you paid plus documented improvements.</p>
+        </section>
+        <section class="related">
+          <h2>Related guides</h2>
+          <ul>
+          <li><a href="https://316cap.com/guides/fix-and-flip-loan-requirements/">Fix and flip loan requirements</a></li>
+          <li><a href="https://316cap.com/guides/how-to-finance-a-brrrr-deal/">How to finance a BRRRR deal</a></li>
+          <li><a href="https://316cap.com/guides/hard-money-loan-cost-massachusetts/">How much does a hard money loan cost in Massachusetts?</a></li>
+          <li><a href="https://316cap.com/resources/calculators">Investor calculators</a></li>
+          </ul>
+        </section>
+        <p class="disclosure">316 Capital is a private lending and capital advisory firm. We arrange business-purpose real estate financing through institutional capital partners; loans are not available for owner-occupied primary residences. Figures on this page are typical market ranges as of September 2026 and are not an offer or commitment. Every quote is transaction-specific and subject to underwriting. Contact <a href="mailto:info@316cap.com">info@316cap.com</a> or <a href="tel:+1-617-546-4817">+1 (617) 546-4817</a>.</p>
+      </article>
+    </main>
+    <footer class="site">
+      <div class="shell">
+        <div>316 Capital LLC, 867 Boylston Street, 5th Floor, Boston, MA 02116</div>
+        <div><a href="https://316cap.com/about">About</a><a href="https://316cap.com/proof-hub">Funded deals</a><a href="https://316cap.com/privacy">Privacy</a><a href="https://316cap.com/terms">Terms</a><a href="https://vault.316cap.com">316 Vault</a></div>
+      </div>
+    </footer>
+    <section id="vault-app" class="vault">
+      <div class="shell">
+        <div><div class="k">316 Capital Vault</div><p>Your loan, on your phone. Upload documents, sign, watch conditions clear, and message your point of contact from the 316 Capital Vault app.</p></div>
+        <a href="https://apps.apple.com/us/app/316-capital-vault/id6798476892">Download on the App Store</a>
+      </div>
+    </section>
+    <script src="/chat-widget.js" defer></script>
+  </body>
+</html>
