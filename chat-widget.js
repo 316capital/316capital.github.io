@@ -280,9 +280,10 @@
   });
 
   function utm() {
-    var p = new URLSearchParams(location.search), o = {};
+    // First touch from attr.js wins (a ChatGPT or ad visitor who browsed first is still that visitor here).
+    var p = new URLSearchParams(location.search), o = (window.KT_SITE && window.KT_SITE.utm && window.KT_SITE.utm()) || {};
     ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid", "fbclid"]
-      .forEach(function (k) { if (p.get(k)) o[k] = p.get(k); });
+      .forEach(function (k) { if (!o[k] && p.get(k)) o[k] = p.get(k); });
     return o;
   }
 
