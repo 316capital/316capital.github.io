@@ -34,6 +34,13 @@
       .static-body ul, .static-body ol { padding-left: 22px; margin: 0 0 16px; }
       .static-body li { margin-bottom: 8px; }
       .static-body a { color: var(--navy); text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 3px; }
+      .static-body table:not(.ledger) { width: 100%; border-collapse: collapse; margin: 8px 0 26px; background: #fff; border: 1px solid var(--line); font-size: 14px; }
+      .static-body table:not(.ledger) th, .static-body table:not(.ledger) td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; line-height: 1.55; }
+      .static-body table:not(.ledger) tr:first-child th, .static-body table:not(.ledger) tr:first-child td:only-child { background: var(--navy); color: #fff; font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; border-bottom: 2px solid var(--gold); }
+      .static-body table:not(.ledger) tr:last-child td { border-bottom: 0; }
+      .static-body .market-links a, .static-body .market-links a * { text-decoration: none; }
+      .static-body .market-links a strong { color: var(--ink); }
+      .static-body .market-links a:hover strong { color: var(--navy); text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 3px; }
       .answer-box { margin: 0 0 34px; padding: 26px 30px; background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--gold); }
       .answer-box p { margin: 0; font-size: 18px; line-height: 1.6; color: var(--ink); }
       .answer-box small { display: block; margin-bottom: 10px; color: var(--gold-ink); font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
