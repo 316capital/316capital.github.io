@@ -27,6 +27,10 @@
  *    side with a timestamp. Under the TCPA a pre-ticked box is not consent.
  *  - Phone is optional. Email is not. A visitor who will not give a number is still a lead.
  *  - No localStorage. Session id lives in memory for the page view.
+ *
+ * v2 (18 Sep 2026): ANSWER FIRST. The capture card no longer gates the conversation. The panel
+ *  opens straight into chat; the server says when to offer the card (ask_capture) and the card
+ *  sits above the input with a "Not now". Bot links to 316cap.com are clickable.
  */
 (function () {
   "use strict";
@@ -94,6 +98,11 @@
     "#c316-go:hover:not(:disabled){background:#0a2160}",
     "#c316-go:disabled{opacity:.5;cursor:default}",
 
+    "#c316-offer{padding:13px 15px 4px;background:#fff;border-top:1px solid rgba(7,25,76,.09)}",
+    "#c316-offer p{margin:0 0 9px;font-size:12.5px;color:#16224a;line-height:1.45}",
+    "#c316-offer .c316-skip{display:block;text-align:center;margin:8px 0 6px;font-size:11.5px;color:#8b93a6;background:none;border:0;cursor:pointer;font-family:inherit}",
+    ".c316-b a{color:" + NAVY + ";text-decoration:underline;text-decoration-color:" + GOLD + ";text-underline-offset:2px;word-break:break-all}",
+    ".c316-m.v .c316-b a{color:#fff}",
     "#c316-bar{display:flex;gap:9px;padding:13px 15px;background:#fff;border-top:1px solid rgba(7,25,76,.09)}",
     "#c316-in{flex:1;padding:12px 14px;border:1px solid rgba(7,25,76,.18);border-radius:10px;font-size:14px;font-family:inherit;color:#16224a;resize:none;max-height:92px;transition:border-color .15s,box-shadow .15s}",
     "#c316-in::placeholder{color:#8e97ab}",
@@ -162,10 +171,26 @@
         n.textContent = who;
         m.firstChild.insertBefore(n, m.firstChild.firstChild);
       }
-      m.querySelector(".c316-b").textContent = text;
+      var bub = m.querySelector(".c316-b");
+      bub.textContent = text;
+      if (role !== "visitor") linkify(bub);
     }
     log.appendChild(m); log.scrollTop = log.scrollHeight;
     return m;
+  }
+  // Only 316cap.com links become anchors. Anything else stays text.
+  function linkify(node) {
+    var t = node.textContent, re = /https:\/\/(?:www\.)?316cap\.com\/[^\s)]*/g, m, last = 0, frag = document.createDocumentFragment(), hit = false;
+    while ((m = re.exec(t))) {
+      hit = true;
+      frag.appendChild(document.createTextNode(t.slice(last, m.index)));
+      var a = document.createElement("a"); a.href = m[0]; a.target = "_blank"; a.rel = "noopener";
+      a.textContent = m[0].replace(/^https:\/\/(www\.)?316cap\.com/, "316cap.com").replace(/\/$/, "");
+      frag.appendChild(a); last = m.index + m[0].length;
+    }
+    if (!hit) return;
+    frag.appendChild(document.createTextNode(t.slice(last)));
+    node.textContent = ""; node.appendChild(frag);
   }
   function thinking() {
     var m = el('<div class="c316-m b"><div class="c316-w"><div class="c316-b c316-dots"><span></span><span></span><span></span></div></div></div>');
@@ -177,7 +202,7 @@
   // database order. The widget never invents a line of its own. That is what lets a bot and
   // a human write into the same window without one of them being dropped or duplicated,
   // and it means the poll and the send response use identical rendering code.
-  var lastId = 0, takenOver = false, agentName = null;
+  var lastId = 0, takenOver = false, agentName = null, identified = false, offerDismissed = false;
 
   function drain(r) {
     var list = r && r.messages;
@@ -210,7 +235,7 @@
       sub.textContent = "Private lending for real estate investors";
     }
     var input = root.querySelector("#c316-in");
-    if (input) input.placeholder = on ? "Type your message" : "Type your answer";
+    if (input) input.placeholder = on ? "Type your message" : "Ask a question or describe your deal";
   }
 
   function api(payload) {
@@ -261,9 +286,21 @@
     return o;
   }
 
-  // Step 1: one card, three fields. Not three questions.
-  function renderCapture() {
+  // The offer card: one card, three fields, above the input, only when the server asks for it
+  // (ask_capture) and never twice. "Not now" keeps the conversation going without it.
+  function maybeOffer(r) {
+    if (identified || offerDismissed || !r || r.ask_capture !== true) return;
+    if (root.querySelector("#c316-offer")) return;
+    var bar = root.querySelector("#c316-bar");
+    if (!bar) return;
+    var card = el('<div id="c316-offer"></div>');
+    bar.parentNode.insertBefore(card, bar);
+    renderCapture(card);
+    log.scrollTop = log.scrollHeight;
+  }
+  function renderCapture(formArea) {
     formArea.innerHTML =
+      '<p><b>Want the desk to price it?</b> Leave your details and a real person picks this thread up. No credit pull, no cost.</p>' +
       '<div class="c316-row"><input type="text" id="c316-fn" placeholder="First name" autocomplete="given-name">' +
       '<input type="text" id="c316-ln" placeholder="Last name" autocomplete="family-name"></div>' +
       '<input type="email" id="c316-em" placeholder="Email" autocomplete="email">' +
@@ -271,15 +308,20 @@
       '<label class="c316-consent"><input type="checkbox" id="c316-cs">' +
       "<span>Text me about this deal. Message and data rates may apply, reply STOP to opt out. " +
       'We never share your number. <a href="/sms-consent" target="_blank" rel="noopener">Details</a></span></label>' +
-      '<button id="c316-go">Continue</button>';
+      '<button id="c316-go">Send my details</button>' +
+      '<button class="c316-skip" type="button">Not now, keep chatting</button>';
 
+    formArea.querySelector(".c316-skip").onclick = function () {
+      offerDismissed = true; formArea.remove();
+      var input = root.querySelector("#c316-in"); if (input) input.focus();
+    };
     var go = formArea.querySelector("#c316-go");
     go.onclick = function () {
       var fn = formArea.querySelector("#c316-fn").value.trim();
       var em = formArea.querySelector("#c316-em").value.trim();
       var ph = formArea.querySelector("#c316-ph").value.trim();
       if (!fn || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) {
-        push("bot", "I need a first name and a working email so I can send your terms.");
+        push("bot", "I need a first name and a working email so the desk can send your terms.");
         return;
       }
       go.disabled = true; go.textContent = "One moment";
@@ -292,16 +334,18 @@
       }).then(function (r) {
         t.remove();
         if (r && r.ok === false) {
-          go.disabled = false; go.textContent = "Continue";
-          push("bot", r.reply || "I need a name and a working email so I can send your terms.");
+          go.disabled = false; go.textContent = "Send my details";
+          push("bot", r.reply || "I need a name and a working email so the desk can send your terms.");
           return;
         }
+        identified = true;
+        formArea.remove();
         drain(r);
-        renderChat();
         // The visitor is a known person from here on, so a rep can see the thread and join it.
         startPolling();
+        var input = root.querySelector("#c316-in"); if (input) input.focus();
       }).catch(function () {
-        t.remove(); go.disabled = false; go.textContent = "Continue";
+        t.remove(); go.disabled = false; go.textContent = "Send my details";
         push("bot", "That did not go through. Email info@316cap.com and we will pick it up.");
       });
     };
@@ -310,7 +354,7 @@
   // Step 2: normal conversation. The server decides which qualification slot each answer
   // fills, so the client deliberately sends no state beyond the message itself.
   function renderChat() {
-    formArea.outerHTML = '<div id="c316-bar"><textarea id="c316-in" rows="1" placeholder="Type your answer"></textarea>' +
+    formArea.outerHTML = '<div id="c316-bar"><textarea id="c316-in" rows="1" placeholder="Ask a question or describe your deal"></textarea>' +
       '<button id="c316-send">Send</button></div>';
     var bar = root.querySelector("#c316-bar");
     var input = bar.querySelector("#c316-in");
@@ -330,6 +374,7 @@
           if (t) t.remove();
           setLive(r && r.taken_over === true, r && r.agent);
           drain(r);
+          maybeOffer(r);
           if (r && r.step === "done") { input.placeholder = "Anything else?"; }
         })
         .catch(function () {
@@ -355,7 +400,7 @@
         if (!r.ok) { push("bot", r.reply || "Chat is offline. Email info@316cap.com."); return; }
         sessionId = r.session_id;
         drain(r);
-        renderCapture();
+        renderChat();
       })
       .catch(function () {
         t.remove();
