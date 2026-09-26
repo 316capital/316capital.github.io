@@ -9,12 +9,12 @@
         "SC"
     ],
     "largest": 3666000,
-    "updated": "2026-09-25",
+    "updated": "2026-09-26",
     "funded_12m": 41,
-    "funded_90d": 21,
+    "funded_90d": 22,
     "volume_12m": 27859408,
-    "volume_90d": 10960908,
+    "volume_90d": 11559908,
     "median_days": 43.5,
-    "funded_total": 41,
-    "funded_volume_total": 27859408
+    "funded_total": 42,
+    "funded_volume_total": 29194998
 }
